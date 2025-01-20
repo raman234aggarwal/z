@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Care</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      header {
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 2rem auto;
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #4caf50;
+      }
+
+      p {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      input,
+      textarea,
+      button {
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      textarea {
+        resize: vertical;
+        height: 120px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: #f4f4f9;
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Customer Care</h1>
+    </header>
+
+    <div class="container">
+      <h1>We are here to help!</h1>
+      <p>Please fill out the form below to submit your issue.</p>
+
+      <form id="contactForm">
+        <label for="name">Your Name</label>
+        <input
+          type="text"
+          id="name"
+          name="user_name"
+          placeholder="Enter your name"
+          required
+        />
+
+        <label for="email">Your Email</label>
+        <input
+          type="email"
+          id="email"
+          name="user_email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="problem">Describe Your Problem</label>
+        <textarea
+          id="problem"
+          name="message"
+          placeholder="Describe your issue in detail"
+          required
+        ></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 Customer Care. All Rights Reserved. |
+        <a href="#">Privacy Policy</a>
+      </p>
+    </footer>
+
+    <script>
+      // Initialize EmailJS with your public key
+      emailjs.init("jDUDMrd3rZCQibSy4");
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Send email using EmailJS
+          emailjs.sendForm("service_6n9qzix", "template_gtii3u5", this).then(
+            function () {
+              alert("Email sent successfully!");
+            },
+            function (error) {
+              alert("Failed to send email: " + error);
+            }
+          );
+        });
+    </script>
+  </body>
+</html>
